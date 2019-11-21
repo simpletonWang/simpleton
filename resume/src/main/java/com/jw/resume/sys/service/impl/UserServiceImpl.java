@@ -5,7 +5,6 @@ import com.jw.resume.common.constants.Constants;
 import com.jw.resume.common.pojo.Result;
 import com.jw.resume.common.service.RedisService;
 import com.jw.resume.common.util.UUIDGenerator;
-import com.jw.resume.exception.CommonException;
 import com.jw.resume.sys.dao.UserDao;
 import com.jw.resume.sys.pojo.User;
 import com.jw.resume.sys.service.UserService;
@@ -41,5 +40,16 @@ public class UserServiceImpl implements UserService {
         }
 //        throw new CommonException(Constants.UNAUTHORIZED, "用户名密码不正确");
         return Result.failMsg();
+    }
+
+    @Override
+    public Result saveUser(String username, String password) {
+        User user = this.userDao.selectUserNameIfThere(username);
+        if (user == null){
+            this.userDao.saveUser(username, DigestUtils.md5Hex(password));
+        }else {
+            return Result.failMsg();
+        }
+        return Result.successMsg();
     }
 }

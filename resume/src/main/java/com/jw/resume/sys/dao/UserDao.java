@@ -8,5 +8,21 @@ import java.util.List;
 @Repository
 public interface UserDao {
 
+    /**
+     * 查询用户
+     * @param username
+     * @param password
+     * @return
+     */
     List<User> selectUserByname(String username,String password);
+
+    /**
+     * 根据用户名查询是否存在
+     */
+    User selectUserNameIfThere(String username);
+
+    /**
+     * 注册
+     */
+    int saveUser(String username,String password);
 }

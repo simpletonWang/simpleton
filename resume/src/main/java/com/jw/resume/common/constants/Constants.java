@@ -8,7 +8,7 @@ public class Constants {
     /**
      * token
      */
-    public static final String SUPERVISE_TOKEN = "supervise-token";
+    public static final String SUPERVISE_TOKEN = "resume-token";
 
     public static final String USER = "user:";
 
