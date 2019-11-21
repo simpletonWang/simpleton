@@ -1,10 +1,9 @@
 package com.jw.resume.sys.service;
 
-import com.jw.resume.sys.pojo.User;
+import com.jw.resume.common.pojo.Result;
 
-import java.util.List;
 
 public interface UserService {
 
-    List<User> selectUser(User user);
+    Result selectUser(String username, String password);
 }

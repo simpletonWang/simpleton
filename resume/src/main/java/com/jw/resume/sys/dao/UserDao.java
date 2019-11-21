@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface UserDao {
 
-    List<User> selectUserByname(User user);
+    List<User> selectUserByname(String username,String password);
 }

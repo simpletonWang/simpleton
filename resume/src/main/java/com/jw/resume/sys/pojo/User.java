@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 @Data
 public class User {
@@ -14,9 +15,9 @@ public class User {
      */
     @Id
     @GeneratedValue(generator = "JDBC")
-    @Column(name = "id")
+    @Column(name = "user_id")
     @Size(message = "用户主键过长！", max = 20)
-    private Long id;
+    private Long userId;
 
 
     @Column(name = "name")
@@ -27,4 +28,7 @@ public class User {
     @Column(name = "password")
     @Size(message = "用户主键过长！", max = 255)
     private String password;
+
+    @Transient
+    private String token;
 }
