@@ -1,7 +1,6 @@
 package com.jw.resume.sys.controller;
 
 import com.jw.resume.common.pojo.Result;
-import com.jw.resume.sys.pojo.User;
 import com.jw.resume.sys.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

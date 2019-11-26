@@ -1,0 +1,8 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jw.resume.sys.dao.UserInfoDao">
+    <select id="selectUserInfo" resultType="com.jw.resume.sys.pojo.UserInfoVO">
+      SELECT full_name,password,alias,date_of_birth,address,email,phone,state,hobby,skills,features,about FROM t_user u
+      INNER JOIN t_user_info ui ON u.user_id = ui.user_id where full_name =#{username}
+    </select>
+</mapper>

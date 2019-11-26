@@ -14,7 +14,7 @@ public interface UserDao {
      * @param password
      * @return
      */
-    List<User> selectUserByname(String username,String password);
+    User selectUserByname(String username,String password);
 
     /**
      * 根据用户名查询是否存在

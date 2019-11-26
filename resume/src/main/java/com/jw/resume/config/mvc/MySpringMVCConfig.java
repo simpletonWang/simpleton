@@ -30,11 +30,12 @@ public class MySpringMVCConfig implements WebMvcConfigurer {
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/druid/**","/login/**")
-                .excludePathPatterns("/test/**")
+                .excludePathPatterns("/test/**","/userInfo/**","/personal/**")
                 .excludePathPatterns("/upload/img")
                 .excludePathPatterns("/upload/imgs")
                 .excludePathPatterns("/user/selectUser")
                 .excludePathPatterns("/user/saveUser")
+                .excludePathPatterns("/**/**")
                 .excludePathPatterns("/login.html","/favicon.ico","registered.html","/fonts/font.css","/error","/null/swagger-resources/configuration/ui")
                 // swagger2页面
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**", "/error/");

@@ -1,0 +1,10 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jw.resume.sys.dao.SkillsDao">
+    <select id="selectSkillsBySql" resultType="com.jw.resume.sys.pojo.Skills">
+        select sk_name,sk_proficiency from t_skills where sk_type=0 and user_id=#{userId}
+    </select>
+    <select id="selectSkills" resultType="com.jw.resume.sys.pojo.Skills">
+         select sk_name,sk_proficiency from t_skills where sk_type=1 and user_id=#{userId}
+    </select>
+</mapper>

@@ -13,7 +13,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
@@ -29,13 +28,15 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Result selectUser(String username, String password) {
-        List<User> userList = this.userDao.selectUserByname(username,DigestUtils.md5Hex(password));
-        if (1 == userList.size()) {
-            User loginUser = userList.get(0);
+        User loginUser = this.userDao.selectUserByname(username,DigestUtils.md5Hex(password));
+        if (loginUser != null) {
             String token = UUIDGenerator.generatorUUID();
             this.redisService.set(Constants.USER + token, JSON.toJSONString(loginUser), 14400);
-            log.info("web用户登录：{}", loginUser);
-            loginUser.setToken(token);
+            this.redisService.set("username",loginUser.getFullName());
+            this.redisService.set("userId",loginUser.getUserId().toString());
+            log.info("web用户登录：{}", Constants.USER + token);
+            loginUser.setToken(Constants.USER + token);
+            log.info("token：{}", loginUser);
             return Result.data(loginUser);
         }
 //        throw new CommonException(Constants.UNAUTHORIZED, "用户名密码不正确");

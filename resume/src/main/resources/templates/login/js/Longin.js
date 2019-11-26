@@ -21,7 +21,8 @@ function AjaxFunc() {
         success: function (data) {
             console.log(data)
             if (data.code == 1) {
-                window.location.href = '/test/index.html';
+                console.log(data);
+                window.location.href = '/personal/index.html';
             } else {
                 $.jGrowl("账号或密码错误！", {header: '提醒'});
             }
