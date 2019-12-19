@@ -2,7 +2,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jw.resume.sys.dao.UserDao">
     <select id="selectUserByname" resultType="com.jw.resume.sys.pojo.User">
-        select full_name,password from t_user where full_name=#{username} and password=#{password}
+        select user_id,full_name,password from t_user where full_name=#{username} and password=#{password}
     </select>
     <select id="selectUserNameIfThere" resultType="com.jw.resume.sys.pojo.User">
         select full_name,password from t_user where full_name=#{username}
